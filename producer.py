@@ -37,7 +37,6 @@ class Producer:
         )
 
 
-
 if __name__ == '__main__':
     producer = Producer()
     producer.produce()
