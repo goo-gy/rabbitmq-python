@@ -27,11 +27,11 @@ class Consumer:
 
     def listen(self):
         print(' [*] Waiting for messages. To exit press CTRL+C')
-        self.channel.basic_consume(queue=QUEUE_NAME, on_message_callback=self.callback, auto_ack=True)
+        self.channel.basic_consume(queue=QUEUE_NAME, on_message_callback=self.__handle_message, auto_ack=True)
         self.channel.start_consuming()
 
     # listen
-    def callback(self, ch, method, properties, body):
+    def __handle_message(self, ch, method, properties, body):
         data = json.loads(body)
         print(f" [x] Received: {data['message']}")
 
